@@ -8,7 +8,8 @@ pipeline {
   stages {
     stage('checkout SCM') {
       steps {
-        git(url: 'https://github.com/j-kyle-moore/jenkins-bo-reg1-apache2.git', branch: 'master', credentialsId: 'jkm-github')
+        // git(url: 'https://github.com/j-kyle-moore/jenkins-bo-reg1-apache2.git', branch: 'master', credentialsId: 'jkm-github')
+        git(url: 'https://${SCM_REPO_URL}', branch: '${SCM_REPO_BRANCH}', credentialsId: '${SCM_REPO_CREDS}')
       }
     }
 
@@ -26,17 +27,17 @@ pipeline {
 
   }
   environment {
-    SCM_SOURCE = 'Bitbucket'
-    SCM_REPO_NAME = 'jenkins-pull-kaniko'
-    SCM_REPO_CREDS = 'j7-bitbucket'
-    SCM_REPO_URL = 'bitbucket.di2e.net/scm/ddjtdev/jenkins-pull-kaniko.git'
-    SCM_REPO_BRANCH = 'DDJTDEV-2083-jenkins-pipeline-for-pulling-kaniko'
+    SCM_SOURCE = 'Github'
+    SCM_REPO_NAME = 'jenkins-bo-reg1-apache2'
+    SCM_REPO_CREDS = 'jkm-github'
+    SCM_REPO_URL = 'github.com/j-kyle-moore/jenkins-bo-reg1-apache2.git'
+    SCM_REPO_BRANCH = 'master'
     JENKINS_SERVER = 'jenkins-commercial.rke2-app.km.test'
-    JENKINS_PIPELINE_NAME = 'jenkins-pull-kaniko'
+    JENKINS_PIPELINE_NAME = 'jenkins-bo-reg1-apache2'
     HARBOR_SERVER = 'harbor.rke2-app.km.test'
     HARBOR_REPO1 = 'ead_base_images'
     HARBOR_REPO2 = 'eaddev'
-    IMAGE_NAME = 'kaniko_debug'
+    IMAGE_NAME = 'apache2'
     IMAGE_TAG = 'latest'
     REGISTRY_CERT_LOC = '/kaniko/ssl/km-test-certs/km_test_ca.crt'
     LOG_LEVEL = 'debug'
