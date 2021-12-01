@@ -21,13 +21,13 @@ pipeline {
       CLAMAV_FILES = '/home/jenkins/agent/workspace/*'
       EMAIL_RECPTS = 'moore.kyle@idsi.com'
     }
-    
+
   }
   stages {
     stage('checkout SCM') {
       steps {
         // git(url: 'https://github.com/j-kyle-moore/jenkins-bo-reg1-apache2.git', branch: 'master', credentialsId: 'jkm-github')
-        git(url: 'https://${SCM_REPO_URL}', branch: '${SCM_REPO_BRANCH}', credentialsId: '${SCM_REPO_CREDS}')
+        git(url: 'https://github.com/j-kyle-moore/jenkins-bo-reg1-apache2.git', branch: 'master', credentialsId: 'jkm-github')
       }
     }
 
