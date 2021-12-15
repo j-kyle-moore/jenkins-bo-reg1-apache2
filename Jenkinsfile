@@ -13,12 +13,6 @@ pipeline {
     }
 
     stage('Build and push to Harbor with Kaniko') {
-      agent {
-        node {
-          label 'kaniko-harbor'
-        }
-
-      }
       steps {
         echo 'Build and Push with Kaniko'
         container(name: 'kaniko-harbor') {
