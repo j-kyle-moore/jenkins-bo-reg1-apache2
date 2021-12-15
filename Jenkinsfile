@@ -16,8 +16,8 @@ pipeline {
 
     stage('Build and push to Harbor with Kaniko') {
       steps {
-        echo 'Build and Push with Kaniko'
-        container(name: 'kaniko-harbor') {
+        echo 'Build and Push with Kaniko' {{
+        // container(name: 'kaniko-harbor') {
           sh '''
           /kaniko/executor --dockerfile `pwd`/Dockerfile  --context `pwd` --destination=${HARBOR_SERVER}/${HARBOR_REPO1}/${IMAGE_NAME}:${IMAGE_TAG} --destination=${HARBOR_SERVER}/${HARBOR_REPO1}/${IMAGE_NAME}:$BUILD_NUMBER --verbosity=${LOG_LEVEL} --registry-certificate ${HARBOR_SERVER}=${REGISTRY_CERT_LOC}
           '''
