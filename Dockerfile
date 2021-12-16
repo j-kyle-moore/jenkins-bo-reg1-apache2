@@ -4,7 +4,7 @@ ARG BASE_TAG=2.4.37
 
 FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG}
 
-USER root
+USER root:root
 
 # Upgrade first
 RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm --nogpgcheck \
