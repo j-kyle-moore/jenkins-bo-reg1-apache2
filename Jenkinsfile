@@ -3,6 +3,7 @@ pipeline {
     node {
       label 'kaniko-harbor'
     }
+  }
 
 environment {
   SCM_SOURCE = 'Github'
@@ -23,7 +24,6 @@ environment {
   EMAIL_RECPTS = 'moore.kyle@idsi.com'
 }
 
-  }
   stages {
     stage('checkout SCM') {
       steps {
