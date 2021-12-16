@@ -43,19 +43,19 @@ environment {
       }
     }
 
-    // stage('Scan with Anchore') {
-    //         steps {
-    //             sh 'echo "$HARBOR_SERVER/$HARBOR_REPO1/$IMAGE_NAME" ${WORKSPACE}/Dockerfile > anchore_images'
-    //             anchore 'anchore_images'
-    //         }
-    //     }
-    //
-    // stage('Send Email with Build Results') {
-    //       steps {
-    //       	emailext attachLog: true, body: "Build URL: ${RUN_DISPLAY_URL}\n \n Artifacts URL: ${RUN_ARTIFACTS_DISPLAY_URL}\n \n Jenkins Build URL (with Anchore Scan Results): https://${JENKINS_SERVER}/job/${JENKINS_PIPELINE_NAME}/lastCompletedBuild/anchore-results/\n \n Harbor Repo (with Trivy Scan Results): https://${env.HARBOR_SERVER}/harbor/projects", subject: "${BUILD_TAG}", to: "${env.EMAIL_RECPTS}"
-    //         // emailext attachLog: true, body: "test", subject: "test", to: "${env.EMAIL_RECPTS}"
-    //   }
-    // }
+    stage('Scan with Anchore') {
+            steps {
+                sh 'echo "$HARBOR_SERVER/$HARBOR_REPO1/$IMAGE_NAME" ${WORKSPACE}/Dockerfile > anchore_images'
+                anchore 'anchore_images'
+            }
+        }
+
+    stage('Send Email with Build Results') {
+          steps {
+          	emailext attachLog: true, body: "Build URL: ${RUN_DISPLAY_URL}\n \n Artifacts URL: ${RUN_ARTIFACTS_DISPLAY_URL}\n \n Jenkins Build URL (with Anchore Scan Results): https://${JENKINS_SERVER}/job/${JENKINS_PIPELINE_NAME}/lastCompletedBuild/anchore-results/\n \n Harbor Repo (with Trivy Scan Results): https://${env.HARBOR_SERVER}/harbor/projects", subject: "${BUILD_TAG}", to: "${env.EMAIL_RECPTS}"
+            // emailext attachLog: true, body: "test", subject: "test", to: "${env.EMAIL_RECPTS}"
+      }
+    }
   }
 
 }
