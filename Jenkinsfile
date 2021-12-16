@@ -38,7 +38,7 @@ pipeline {
     //   }
     // }
   }
-}
+
 
   environment {
     SCM_SOURCE = 'Github'
@@ -58,3 +58,4 @@ pipeline {
     CLAMAV_FILES = '/home/jenkins/agent/workspace/*'
     EMAIL_RECPTS = 'moore.kyle@idsi.com'
   }
+}
