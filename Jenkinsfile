@@ -46,7 +46,7 @@ pipeline {
 
     stage('Scan with Anchore') {
             steps {
-                sh 'echo "$HARBOR_SERVER/$HARBOR_REPO1/$IMAGE_NAME" ${WORKSPACE}/Dockerfile > anchore_images'
+                sh 'echo "$HARBOR_SERVER/$HARBOR_REPO1/$IMAGE_NAME:$IMAGE_TAG" ${WORKSPACE}/Dockerfile > anchore_images'
                 anchore 'anchore_images'
             }
         }
